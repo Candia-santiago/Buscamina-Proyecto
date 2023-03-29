@@ -31,6 +31,7 @@ function setup()
   ponerMinaCasillero(4,3);
 
   // Modificar/completar
+  casillerosSinDescubrir= COLUMNAS * FILAS;
 }
 
 
@@ -41,14 +42,16 @@ function draw() {
     if (mouseButton == LEFT)
     {
       if (tieneMinaCasillero(columnaPresionada,filaPresionada)){
-        pintarCasillero(columnaPresionada,filaPresionada,COLOR_CASILLERO_CON_MINA)
         perder ();        
       }
       else {
         pintarCasillero(columnaPresionada, filaPresionada, COLOR_CASILLERO_SIN_MINA); 
-      }
-          
+        descubrirCasillero (columnaPresionada, filaPresionada );
+      }    
     }
+    else {
+      pintarCasillero (columnaPresionada, filaPresionada, COLOR_CASILLERO_MARCADO);
+  }
 
     hizoClick = false;  //Indico que ya "procesé" el click del usuario. NO modificar
   }
